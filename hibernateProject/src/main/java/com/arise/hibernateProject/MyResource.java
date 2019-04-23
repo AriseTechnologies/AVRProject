@@ -11,6 +11,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -54,6 +55,9 @@ public class MyResource {
 
 		UsersEntity u = (UsersEntity) session.get(UsersEntity.class,
 				req.getUserId());
+//		Query q = session.createQuery("from UsersEntity u where u.userId='OK1820'");
+//		q.setCacheable(true);
+//		UsersEntity u = (UsersEntity) q.uniqueResult();
 		boolean match = false;
 		if (null != u) {
 			match = PasswordUtils.verifyUserPassword(req.getPassword(),
@@ -84,7 +88,8 @@ public class MyResource {
 
 		Session session = HibernateUtil.getSessionFactory().openSession();
 
-		UsersEntity usr = (UsersEntity) session.get(UsersEntity.class, req.getUserId());
+		UsersEntity usr = (UsersEntity) session.get(UsersEntity.class,
+				req.getUserId());
 		if (null != usr) {
 			if (null != req.getUserId()) {
 				usr.setUserId(req.getUserId());
@@ -155,7 +160,7 @@ public class MyResource {
 		hotel.setOwnEmailId(req.getOwnEmailId());
 		hotel.setOwnMobNo(req.getOwnMobNo());
 		hotel.setRating(req.getRating());
-		hotel.setFlats(req.getFlats());
+//		hotel.setFlats(req.getFlats());
 		
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction trx = session.beginTransaction();

@@ -1,21 +1,22 @@
 package com.arise.hibernateProject;
 
-import java.util.List;
+import java.util.Set;
 
 public class HotelRequest extends BaseRequest{
 
-	private String HotelName;
+	private String hotelName;
 	private String ownerNm;
 	private String ownEmailId;
 	private String ownMobNo;
 	private String rating;
-	private List<FlatsEntity> flats;
+	private Set<FlatReq> flats;
+	
 	
 	public String getHotelName() {
-		return HotelName;
+		return hotelName;
 	}
 	public void setHotelName(String hotelName) {
-		HotelName = hotelName;
+		this.hotelName = hotelName;
 	}
 	public String getOwnerNm() {
 		return ownerNm;
@@ -41,10 +42,12 @@ public class HotelRequest extends BaseRequest{
 	public void setRating(String rating) {
 		this.rating = rating;
 	}
-	public List<FlatsEntity> getFlats() {
+	public Set<FlatReq> getFlats() {
 		return flats;
 	}
-	public void setFlats(List<FlatsEntity> flats) {
+	public void setFlats(Set<FlatReq> flats) {
 		this.flats = flats;
 	}
+	
+	
 }

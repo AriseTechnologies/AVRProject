@@ -2,16 +2,17 @@ package com.arise.hibernateProject;
 
 public class HotelResponse extends BaseResponse {
 
-	private String HotelName;
+	private String hotelName;
 	private String ownerNm;
 	private String ownEmailId;
 	private String ownMobNo;
 	
+	
 	public String getHotelName() {
-		return HotelName;
+		return hotelName;
 	}
 	public void setHotelName(String hotelName) {
-		HotelName = hotelName;
+		this.hotelName = hotelName;
 	}
 	public String getOwnerNm() {
 		return ownerNm;

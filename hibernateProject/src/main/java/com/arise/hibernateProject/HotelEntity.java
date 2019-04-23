@@ -1,10 +1,15 @@
 package com.arise.hibernateProject;
 
-import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -12,14 +17,17 @@ import javax.persistence.Table;
 public class HotelEntity{
 	
 	@Id
+	@Column(name="hotelId")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="htl_generator")
+	@SequenceGenerator(name="htl_generator",initialValue=1,allocationSize=1,sequenceName="hotel_seq")
 	private long hotelId;
-	private String HotelName;
+	private String hotelName;
 	private String ownerNm;
 	private String ownEmailId;
 	private String ownMobNo;
 	private String rating;
-	@OneToMany(mappedBy="hotel")
-	private List<FlatsEntity> flats;
+	@OneToMany( mappedBy="hotel",cascade=CascadeType.ALL)
+	private Set<FlatsEntity> flats;
 	
 	public long getHotelId() {
 		return hotelId;
@@ -27,11 +35,12 @@ public class HotelEntity{
 	public void setHotelId(long hotelId) {
 		this.hotelId = hotelId;
 	}
+	
 	public String getHotelName() {
-		return HotelName;
+		return hotelName;
 	}
 	public void setHotelName(String hotelName) {
-		HotelName = hotelName;
+		this.hotelName = hotelName;
 	}
 	public String getOwnerNm() {
 		return ownerNm;
@@ -57,10 +66,10 @@ public class HotelEntity{
 	public void setRating(String rating) {
 		this.rating = rating;
 	}
-	public List<FlatsEntity> getFlats() {
+	public Set<FlatsEntity> getFlats() {
 		return flats;
 	}
-	public void setFlats(List<FlatsEntity> flats) {
+	public void setFlats(Set<FlatsEntity> flats) {
 		this.flats = flats;
 	}
 	

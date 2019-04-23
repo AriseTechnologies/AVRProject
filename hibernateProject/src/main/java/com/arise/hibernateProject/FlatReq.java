@@ -1,13 +1,12 @@
 package com.arise.hibernateProject;
 
-import java.util.List;
 
 public class FlatReq {
 
 	private long flatId;
 	private String flatType;
 	private String flatNum;
-	private List<String> rooms;
+	private String rooms;
 	
 	public long getFlatId() {
 		return flatId;
@@ -27,10 +26,10 @@ public class FlatReq {
 	public void setFlatNum(String flatNum) {
 		this.flatNum = flatNum;
 	}
-	public List<String> getRooms() {
+	public String getRooms() {
 		return rooms;
 	}
-	public void setRooms(List<String> rooms) {
+	public void setRooms(String rooms) {
 		this.rooms = rooms;
 	}
 	
