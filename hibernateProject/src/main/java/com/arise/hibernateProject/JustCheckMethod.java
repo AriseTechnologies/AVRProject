@@ -1,5 +1,7 @@
 package com.arise.hibernateProject;
 
+import com.arise.hibernateProject.util.PasswordUtils;
+
 public class JustCheckMethod {
 
 	public static void main(String[] args) {
